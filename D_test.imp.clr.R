@@ -38,6 +38,7 @@ df <- data.frame(variable = c("ラグ付き応答変数", "人口", "GDP",
 row.names(df) <- NULL
 
 ## キャタピラプロットを作る
+## 95%信頼区間の計算
 a <- c(0.293965 - 1.96*0.041366, 0.293965 + 1.96*0.041366)
 b <- c(-0.098574 - 1.96*0.179015, -0.098574 + 1.96*0.179015)
 c <- c(0.1037320 - 1.96*0.106342, 0.1037320 + 1.96*0.106342)
@@ -54,7 +55,3 @@ ctplr <- ggplot(df, aes(x = reorder(variable, lower),
   xlab("説明変数") + ylab("係数の推定値") +
   coord_flip()
 print(ctplr)
-
-
-
-table(D_test$LIEC.imp.1)
