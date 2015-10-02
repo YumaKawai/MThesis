@@ -55,3 +55,27 @@ table(qog.ts.2$year)
 ## 2005年までのデータを使用(欠損値が多いため)
 qog.ts.2 <- subset(qog.ts.2, year < 2006)
 summary(qog.ts.2)
+
+## 欠損値を処理
+qog.ts.2$physint.imp.1 <- random.imp(qog.ts.2$physint) 
+qog.ts.2$lag.physint.imp.1 <- random.imp(qog.ts.2$lag.physint)
+qog.ts.2$competive.imp.1 <- random.imp(qog.ts.2$competive)
+
+qog.ts.2$gdp.us.imp.1 <- random.imp(qog.ts.2$gdp.us)
+qog.ts.2$pop.size.imp.1 <- random.imp(qog.ts.2$pop.size)
+qog.ts.2$type2.imp.1 <- random.imp(qog.ts.2$type2)
+qog.ts.2$type3.imp.1 <- random.imp(qog.ts.2$type3)
+qog.ts.2$ele.sys1.imp.1 <- random.imp(qog.ts.2$ele.sys1)
+qog.ts.2$jud.ind.imp.1 <- random.imp(qog.ts.2$jud.ind)
+
+## NAに0を補完
+qog.ts.2$party1.imp.0 <- imp.0(qog.ts.2$party1)
+
+## 選挙制度変数の再コーディング
+qog.ts.2$ele.sys3 <- NA
+qog.ts.2$ele.sys3[qog.ts.2$ele.sys1.imp.1 == 2] <- 3
+qog.ts.2$ele.sys3[qog.ts.2$ele.sys1.imp.1 == 3] <- 2
+qog.ts.2$ele.sys3[qog.ts.2$ele.sys1.imp.1 == 1] <- 1
+
+## データの確認
+summary(qog.ts.2)
