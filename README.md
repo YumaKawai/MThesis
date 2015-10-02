@@ -13,3 +13,6 @@
 
 * 新しいデータセットの構築(qog_std_ts_jan15.csvより)
 * MData.csv(1990年から2010年までのTSCSデータ)
+* 加盟国のデータのみ抽出(MData.fin.csv)
+* Pooling, 固定効果モデル, 変動効果モデルでそれぞれ分析(panel.plm.R)
+* 検定によるモデル比較(panel.plm.R)
